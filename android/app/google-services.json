@@ -1,20 +1,21 @@
 {
   "project_info": {
     "project_number": "645821251864",
+    "firebase_url": "https://quizzykids-3f39b-default-rtdb.firebaseio.com",
     "project_id": "quizzykids-3f39b",
     "storage_bucket": "quizzykids-3f39b.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:645821251864:android:83e4c4d9253a9610c6de6d",
+        "mobilesdk_app_id": "1:645821251864:android:f41dc6049d60e7b1c6de6d",
         "android_client_info": {
           "package_name": "com.example.quizzykids"
         }
       },
       "oauth_client": [
         {
-          "client_id": "645821251864-72vi5k2g2s21hc0sdsjq6ctq4sgqmf4m.apps.googleusercontent.com",
+          "client_id": "645821251864-erc4hopo984t40a953megkgdfq4td594.apps.googleusercontent.com",
           "client_type": 3
         }
       ],

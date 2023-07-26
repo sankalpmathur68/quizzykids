@@ -54,9 +54,10 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyBDG5-KAU-YNjPCEdqd016CDLGxQVBtvOY',
-    appId: '1:645821251864:android:83e4c4d9253a9610c6de6d',
+    appId: '1:645821251864:android:f41dc6049d60e7b1c6de6d',
     messagingSenderId: '645821251864',
     projectId: 'quizzykids-3f39b',
+    databaseURL: 'https://quizzykids-3f39b-default-rtdb.firebaseio.com',
     storageBucket: 'quizzykids-3f39b.appspot.com',
   );
 }

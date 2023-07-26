@@ -19,8 +19,7 @@ class QuizPage extends StatefulWidget {
 
 class _QuizPageState extends State<QuizPage> {
   int _score = 0;
-  final String? userId = FirebaseAuth.instance.currentUser
-      ?.uid; // Replace this with the user's unique ID or username
+  final String? userId = FirebaseAuth.instance.currentUser?.uid;
   final DatabaseReference _databaseReference =
       FirebaseDatabase.instance.ref().child('users');
   int _totalReward = 0;
@@ -47,11 +46,10 @@ class _QuizPageState extends State<QuizPage> {
   }
 
   Future<int> getRewards() async {
-    dynamic event = await _databaseReference.child('$userId').once();
-    dynamic data = event.data?.snapshot.value;
-    print(data);
-    final value = event?.data.value; // Store the value in a variable
-    return value != null ? value['rewards'] ?? 0 : 0;
+    dynamic event = await _databaseReference.child('$userId').get();
+    dynamic data = event.value;
+    // final value = event?.data.value; // Store the value in a variable
+    return data != null ? data['rewards'] ?? 0 : 0;
   }
 
   Future<void> updateRewards(int newRewards) async {
@@ -83,6 +81,7 @@ class _QuizPageState extends State<QuizPage> {
     if (_questions.isNotEmpty &&
         _questions.every((q) => q.userResponse != null)) {
       Future.delayed(Duration.zero, () {
+        addQuizRewards(_totalReward);
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
@@ -126,13 +125,19 @@ class _QuizPageState extends State<QuizPage> {
                     }
                   },
                   itemBuilder: (context, index) {
-                    print(_questions[index].correctOptionIndex);
                     return SingleChildScrollView(
                       child: Container(
-                        margin: EdgeInsets.fromLTRB(10, 50, 10, 10),
+                        margin: EdgeInsets.fromLTRB(10, 60, 10, 10),
                         padding: EdgeInsets.all(10),
                         child: Column(
                           children: [
+                            Text(
+                              "${index + 1}" "/ ${_questions.length}",
+                              style: GoogleFonts.shortStack(fontSize: 20),
+                            ),
+                            SizedBox(
+                              height: 30,
+                            ),
                             QuestionWidget(
                               question: _questions[index],
                               onAnswerSelected: (selectedOptionIndex) {
